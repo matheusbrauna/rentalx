@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { helloRoute } from './hello.route'
+import { categoriesRoutes } from './categories.routes'
 
 export const router = Router()
 
-router.use('/', helloRoute)
+router.use('/categories', categoriesRoutes)
