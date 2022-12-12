@@ -1,6 +1,7 @@
 import { createReadStream } from 'fs'
 import { parse } from 'csv-parse'
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
+import { unlink } from 'fs/promises'
 
 interface IImportCategory {
   name: string
@@ -29,6 +30,7 @@ export class ImportCategoryUseCase {
           })
         })
         .on('end', () => {
+          unlink(file.path)
           resolve(categories)
         })
         .on('error', (err) => {
